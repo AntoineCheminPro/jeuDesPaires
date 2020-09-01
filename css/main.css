@@ -87,6 +87,54 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.jumbotron{
+  background-color: #454851;
+  color: #ccc;
+}
+ 
+.main{
+  height: 50 vh;
+  background-color: #73956F;
+}
+
+.card{
+border :0;
+  height: 20 vh;
+  width : 10 vw;
+}
+.turned{
+  display :none;
+}
+.show{
+  display: block;
+}
+.bottom{
+  height: 20 vh;
+  width : 10 vw;
+  z-index: 2;
+  background-color: black;
+}
+.firstpair{
+  background-color: #FFC482;
+
+}
+.secondpair{
+  background-color: #ED1C24;
+}
+.thirdpair{
+  background-color: #FCFCFC;
+}
+.fourthpair{
+  background-color: #92AFD7 ;
+}
+.fifthpair{
+  background-color: #934B00;
+}
+.sixthpair{
+  background-color: #FF579F;
+}
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
