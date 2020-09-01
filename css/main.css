@@ -103,6 +103,7 @@ border :0;
   width : 10 vw;
 }
 .turned{
+  transition-delay: 5000ms;
   display :none;
 }
 .show{
