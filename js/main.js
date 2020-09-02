@@ -1,7 +1,6 @@
 // usefull variables
-const cards=document.getElementsByClassName("bottom");
 const choosenCards=[];
-
+const DECK= [];
 const colorByValue = {
     1:"firstpair",
     2:"secondpair",
@@ -14,15 +13,8 @@ const colorByValue = {
 let colorChoices=[];
 let foundPair =[];
 let deckSize = 12;
-const DECK= [];
-
-
 
 deckConstructor()
-
-// for (index of deck){
-
-// }
 
 
 // functions
@@ -45,10 +37,23 @@ function drawOneCard(){
     return cardToCraft;
 }
 
-// take all cards of the deck one by one // need to work on the main deck to keep size since clone deck size decrease
+function craftCard(cardAtWork){
+    let board = document.getElementById("cardBoard");
+    let article = document.createElement("article");
+    let button = document.createElement("button");
+    article.classList.add("card", "m-2", "p-0", "col-3", "border-0",colorByValue[cardAtWork]);
+    button.setAttribute("href","#");
+    button.classList.add("bottom");
+    button.setAttribute("value",cardAtWork);
+    article.appendChild(button);
+    board.appendChild(article);
+}
+
+// take all cards of the deck one by one and craft it on the board// need to work on the main deck to keep size since clone deck size decrease
 function drawAll (){
     for (card of DECK){
-        drawOneCard();
+        let cardAtWork = drawOneCard();
+        craftCard(cardAtWork);
     }
     
 }
@@ -65,6 +70,9 @@ function slowTurn(){
     choosenCards.shift(choosenCards[1]);
     choosenCards.shift(choosenCards[0]);
 }
+
+drawAll();
+const cards = document.getElementsByClassName("bottom");
 
 // main 
 for (let i=0; i<cards.length;i++){
@@ -85,5 +93,4 @@ for (let i=0; i<cards.length;i++){
         }
     })
 };
-
 
