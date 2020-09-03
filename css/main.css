@@ -117,47 +117,18 @@ article {
   background-color: black;
 }
 
+.round {
+  border-radius: 20px;
+}
 
 .btnstart{
+  padding:0;
+  border:0;
   border-radius: 12px;
   height: 5rem;
 }
 
 
-.firstpair{
-  background-color: #FFC482;
-}
-.secondpair{
-  background-color: #ED1C24;
-}
-.thirdpair{
-  background-color: #FCFCFC;
-}
-.fourthpair{
-  background-color: #92AFD7 ;
-}
-.fifthpair{
-  background-color: #934B00;
-}
-.sixthpair{
-  background-color: #FF579F;
-}
-
-@media (min-width: 200px) {
-
-  }
-@media (min-width: 500px) {
- 
-  }
-@media (min-width: 800px) {
-
-  }
-@media (min-width: 1000px) {
-
-  }
-  @media (min-width: 1200px) {
- 
-    }
 /* ==========================================================================
    Helper classes
    ========================================================================== */
