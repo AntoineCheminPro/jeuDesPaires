@@ -55,42 +55,57 @@ function drawAll (){
         let cardAtWork = drawOneCard();
         craftCard(cardAtWork);
     }
-    
+    const cards = document.getElementsByClassName("bottom");
+    return cards;
 }
 
 // add a timer before hidding 2 cards when they are not a pair
-function delayedTurn() {
-    window.setTimeout(slowTurn, 1500);
+function delayedTurn(cards) {
+    window.setTimeout(function(){
+        slowTurn(cards);
+    }, 
+    1000);
+    return cards;
 }
 
 // hide the 2 cards
-function slowTurn(){
+function slowTurn(cards){
     cards[choosenCards[0]].classList.remove("turned")
     cards[choosenCards[1]].classList.remove("turned")
     choosenCards.shift(choosenCards[1]);
     choosenCards.shift(choosenCards[0]);
+    return cards;
+
 }
 
-drawAll();
-const cards = document.getElementsByClassName("bottom");
+// start function
+function start(){
+    let btn = document.getElementById("start");
+    btn.classList.add("turned");
+    let cards = drawAll();
+    cards = play(cards);
+}
 
-// main 
-for (let i=0; i<cards.length;i++){
-    cards[i].addEventListener ("click", function(){
-        cards[i].classList.add("turned");
-        choosenCards.push(i);
-        colorChoices.push(cards[i].value);
-        if (colorChoices.length===2){
-            if (colorChoices[0] === colorChoices[1]){
-                foundPair.push(colorChoices[0]);
-                choosenCards.shift(choosenCards[1]);
-                choosenCards.shift(choosenCards[0]);
+// main
+function play(cards){
+    for (let i=0; i<cards.length;i++){
+        cards[i].addEventListener ("click", function(){
+            cards[i].classList.add("turned");
+            choosenCards.push(i);
+            colorChoices.push(cards[i].value);
+            if (colorChoices.length===2){
+                if (colorChoices[0] === colorChoices[1]){
+                    foundPair.push(colorChoices[0]);
+                    choosenCards.shift(choosenCards[1]);
+                    choosenCards.shift(choosenCards[0]);
+                }
+                else{ 
+                    cards = delayedTurn(cards);
+                }
+                colorChoices=[];
             }
-            else{ 
-                delayedTurn(cards);
-            }
-            colorChoices=[];
-        }
-    })
-};
+        })
+    };
+    return cards;
+}
 
