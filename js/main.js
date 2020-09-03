@@ -1,6 +1,6 @@
 // usefull variables
 const choosenCards=[];
-const DECK= [];
+var deck= [];
 const colorByValue = {
     1:"firstpair",
     2:"secondpair",
@@ -14,7 +14,6 @@ let colorChoices=[];
 let foundPair =[];
 let deckSize = 12;
 
-deckConstructor()
 
 
 // functions
@@ -22,15 +21,15 @@ deckConstructor()
 // create a deck with the choosen size
 function deckConstructor (){
     for (i=deckSize;i>0;i=i-2){
-        DECK.push((i/2));
-        DECK.push((i/2));
+        deck.push((i/2));
+        deck.push((i/2));
     } 
+    return deck;
 }
-// clone it to work with
-var fullDeck = DECK.slice(0);
 
 // draw a card form the clone deck
-function drawOneCard(){
+function drawOneCard(fullDeck){
+    var fullDeck = deck.slice(0);
     var cardIndex = Math.floor(Math.random()*fullDeck.length);
     var cardToCraft = fullDeck[cardIndex];
     fullDeck.splice(cardIndex,1);
@@ -51,7 +50,7 @@ function craftCard(cardAtWork){
 
 // take all cards of the deck one by one and craft it on the board// need to work on the main deck to keep size since clone deck size decrease
 function drawAll (){
-    for (card of DECK){
+    for (card of deck){
         let cardAtWork = drawOneCard();
         craftCard(cardAtWork);
     }
@@ -80,6 +79,8 @@ function slowTurn(cards){
 
 // start function
 function start(){
+    deck = deckConstructor();
+    // clone it to work with
     let btn = document.getElementById("start");
     btn.classList.add("turned");
     let cards = drawAll();
@@ -88,6 +89,7 @@ function start(){
 
 // main
 function play(cards){
+    let trys =0;
     for (let i=0; i<cards.length;i++){
         cards[i].addEventListener ("click", function(){
             cards[i].classList.add("turned");
