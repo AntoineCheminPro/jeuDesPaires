@@ -1,21 +1,19 @@
 // usefull variables
 const choosenCards=[];
 const colorByValue = {
-    1:"firstpair",
-    2:"secondpair",
-    3:"thirdpair",
-    4:"fourthpair",
-    5:"fifthpair",
-    6:"sixthpair"
+    1:"#FFC482", 
+    2:"#ED1C24",
+    3:"#FCFCFC",
+    4:"#92AFD7",
+    5:"#934B00",
+    6:"#FF579F"
 }
 
 var deck= [];
 
 let colorChoices=[];
 let foundPair =[];
-let deckSize = 2;
-
-
+let deckSize = 12;
 
 // functions
 
@@ -51,9 +49,10 @@ function craftCard(cardAtWork){
     let board = document.getElementById("cardBoard");
     let article = document.createElement("article");
     let button = document.createElement("button");
-    article.classList.add("card", "m-2", "p-0", "col-3", "border-0",colorByValue[cardAtWork]);
+    article.classList.add("card", "m-2", "p-0", "col-3", "border-0", "round");
+    article.style.backgroundColor = colorByValue[cardAtWork];
     button.setAttribute("href","#");
-    button.classList.add("bottom");
+    button.classList.add("bottom", "round");
     button.setAttribute("value",cardAtWork);
     article.appendChild(button);
     board.appendChild(article);
@@ -63,7 +62,6 @@ function craftCard(cardAtWork){
 function start(){
     bordCleaner();
     deck = deckConstructor();
-    // clone it to work with
     let btn = document.getElementById("start");
     // btn.classList.add("turned");
     let cards = drawAll();
@@ -81,7 +79,7 @@ function delayedTurn(cards) {
     window.setTimeout(function(){
         slowTurn(cards);
     }, 
-    1000);
+    600);
     return cards;
 }
 
@@ -94,29 +92,33 @@ function slowTurn(cards){
     return cards;
 }
 
-
-
 // main
 function play(cards){
     let trys =0;
+    let inProgress =0;
     for (let i=0; i<cards.length;i++){
         cards[i].addEventListener ("click", function(){
-            cards[i].classList.add("turned");
-            choosenCards.push(i);
-            colorChoices.push(cards[i].value);
-            if (colorChoices.length===2){
-                if (colorChoices[0] === colorChoices[1]){
-                    foundPair.push(colorChoices[0]);
-                    choosenCards.shift(choosenCards[1]);
-                    choosenCards.shift(choosenCards[0]);
+            if (inProgress<2){
+                cards[i].classList.add("turned");
+                choosenCards.push(i);
+                colorChoices.push(cards[i].value);
+                inProgress+=1;
+                if (colorChoices.length===2){
+                    trys +=1;
+                    if (colorChoices[0] === colorChoices[1]){
+                        foundPair.push(colorChoices[0]);
+                        choosenCards.shift(choosenCards[1]);
+                        choosenCards.shift(choosenCards[0]);
+                        inProgress = 0;
+                    }
+                    else{ 
+                        cards = delayedTurn(cards);
+                        inProgress = 0;
+                    }
+                    colorChoices=[];
                 }
-                else{ 
-                    cards = delayedTurn(cards);
-                }
-                colorChoices=[];
             }
+                
         })
     };
-    return cards;
 }
-
