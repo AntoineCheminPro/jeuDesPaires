@@ -1,6 +1,5 @@
 // usefull variables
 const choosenCards=[];
-var deck= [];
 const colorByValue = {
     1:"firstpair",
     2:"secondpair",
@@ -10,9 +9,11 @@ const colorByValue = {
     6:"sixthpair"
 }
 
+var deck= [];
+
 let colorChoices=[];
 let foundPair =[];
-let deckSize = 12;
+let deckSize = 2;
 
 
 
@@ -27,9 +28,19 @@ function deckConstructor (){
     return deck;
 }
 
+// take all cards of the deck one by one and craft it on the board// need to work on the main deck to keep size since clone deck size decrease
+function drawAll (){
+    var fullDeck = deck.slice(0);
+    for (card of deck){
+        let cardAtWork = drawOneCard(fullDeck);
+        craftCard(cardAtWork);
+    }
+    const cards = document.getElementsByClassName("bottom");
+    return cards;
+}
+
 // draw a card form the clone deck
 function drawOneCard(fullDeck){
-    var fullDeck = deck.slice(0);
     var cardIndex = Math.floor(Math.random()*fullDeck.length);
     var cardToCraft = fullDeck[cardIndex];
     fullDeck.splice(cardIndex,1);
@@ -48,14 +59,21 @@ function craftCard(cardAtWork){
     board.appendChild(article);
 }
 
-// take all cards of the deck one by one and craft it on the board// need to work on the main deck to keep size since clone deck size decrease
-function drawAll (){
-    for (card of deck){
-        let cardAtWork = drawOneCard();
-        craftCard(cardAtWork);
-    }
-    const cards = document.getElementsByClassName("bottom");
-    return cards;
+// start function
+function start(){
+    bordCleaner();
+    deck = deckConstructor();
+    // clone it to work with
+    let btn = document.getElementById("start");
+    // btn.classList.add("turned");
+    let cards = drawAll();
+    cards = play(cards);
+}
+
+function bordCleaner(){
+    let board = document.getElementById("cardBoard");
+    board.innerHTML="";
+    deck=[];
 }
 
 // add a timer before hidding 2 cards when they are not a pair
@@ -74,18 +92,9 @@ function slowTurn(cards){
     choosenCards.shift(choosenCards[1]);
     choosenCards.shift(choosenCards[0]);
     return cards;
-
 }
 
-// start function
-function start(){
-    deck = deckConstructor();
-    // clone it to work with
-    let btn = document.getElementById("start");
-    btn.classList.add("turned");
-    let cards = drawAll();
-    cards = play(cards);
-}
+
 
 // main
 function play(cards){
