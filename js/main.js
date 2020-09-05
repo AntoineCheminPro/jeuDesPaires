@@ -1,3 +1,17 @@
+let patPatrouille = {
+    couleur:"#2196f3",
+    image:"img/patpatrouille/depositphotos_84789388-stock-photo-yellow-and-white-dog-paw.jpg",
+    logo:"img/patpatrouille/logo.png",
+    dos:"img/patpatrouille/logo.png"
+}
+
+let peppa = {
+    couleur:"#2196f3",
+    image:"img/peppapig/pattern-02-dark-blue.png",
+    logo:"img/peppapig/119-1194994_peppa-pig-books-available-in-cziplee-peppa-pig.png",
+    dos:"img/peppapig/peppa_george_characters.png"
+}
+
 // usefull variables
 const choosenCards=[];
 const colorByValue = {
@@ -16,12 +30,26 @@ const colorByValue = {
     13:"#1EFC1E",
     14:"#7A542E",
     15:"#94ECBE",
-    16:"#F4DBD8",
-    17:"#E980FC ",
-    18:"#6B818C",
-    19:"#090C9B",
-    20:"#870058"
+    16:"#F4DBD8"
 
+}
+const imgPatpatrouille ={
+    1:"img/patpatrouille/chase_badge_patpatrouile_sq.png", 
+    2:"img/patpatrouille/fermiere_rumi_patpatrouille_sq.png",
+    3:"img/patpatrouille/jake_badge_patpatrouile_sq.png",
+    4:"img/patpatrouille/everest_badge_patpatrouile_sq.png",
+    5:"img/patpatrouille/m_le_maire_hollinger_badge_patpatrouile_sq.png",
+    6:"img/patpatrouille/marcus_badge_patpatrouile_sq.png",
+    7:"img/patpatrouille/maurice_badge_patpatrouile_sq.png",
+    8:"img/patpatrouille/rocky_badge_patpatrouile_sq.png",
+    9:"img/patpatrouille/mme_la_maire_goodway_badge_patpatrouile_sq.png",
+    10:"img/patpatrouille/poule_gallinetta_badge_patpatrouile_sq.png",
+    11:"img/patpatrouille/ruben_badge_patpatrouile_sq.png",
+    12:"img/patpatrouille/ryder_badge_patpatrouile_sq.png",
+    13:"img/patpatrouille/stella_badge_patpatrouile_sq.png",
+    14:"img/patpatrouille/zuma_badge_patpatrouile_sq.png",
+    15:"img/patpatrouille/capt_turbo_badge_patpatrouile_sq.png",
+    16:"img/patpatrouille/4636498-la-pat-patrouille-au-complet-article_media-2.jpg"
 }
 
 const imgPeppa ={
@@ -42,11 +70,13 @@ const imgPeppa ={
     15:"img/peppapig/suzy_sheep_splat-1.png",
     16:"img/peppapig/zoe_zebra_splat-1.png",
 }
-var deck= [];
+ 
 
+
+var deck= [];
 let colorChoices=[];
 let foundPair =[];
-let deckSize = 8;
+let deckSize = 20;
 var speed = 1200;
 
 // functions
@@ -87,8 +117,8 @@ function craftCard(cardAtWork){
     article.style.backgroundColor = colorByValue[cardAtWork];
     let img = document.createElement("img");
     let imgBack = document.createElement("img");
-    img.src =imgPeppa[cardAtWork];
-    imgBack.src ="img/peppapig/peppa_george_characters.png";
+    img.src =imgSelected[cardAtWork];
+    imgBack.src = imgBackSelected;
     img.classList.add("effect");
     button.setAttribute("href","#");
     button.classList.add("bottom", "round");
@@ -100,7 +130,64 @@ function craftCard(cardAtWork){
 }
 
 // start function
-function start(){
+function startingImg(playWith){
+    let screen=document.getElementById("fullScreen");
+    screen.classList.remove("turned");
+    var imgSelected =0;
+    if (playWith===1){
+        imgSelected = imgPatpatrouille;
+        let bgImg = document.getElementById("bgImg");
+        bgImg.setAttribute('background',"img/patpatrouille/depositphotos_84789388-stock-photo-yellow-and-white-dog-paw.jpg");
+    }
+    else{
+        imgSelected=imgPeppa;
+        let bgImg = document.getElementById("bgImg");
+        bgImg.setAttribute('background',"img/peppapig/pattern-02-dark-blue.png");
+        
+    }
+    return imgSelected;
+}
+
+function startImgBack (playWith){
+    var imgBackSelected=0;
+    if (playWith===1){
+        imgBackSelected=patPatrouille.dos;
+    }
+    else{
+        imgBackSelected=peppa.dos;
+    }
+    return imgBackSelected;
+}
+
+function header (playWith){
+    let header= document.getElementById("header");
+    if (playWith===1){
+        header.classList.add("patPatrouille");
+    }
+    else{
+        header.classList.add("peppa");
+    }
+}
+
+function logo (playWith){
+    let logo= document.getElementById("logo");
+    if (playWith===1){
+        logo.setAttribute("src",patPatrouille.logo);
+        logo.classList.add("patPatrouille");
+    }
+    else{
+        logo.setAttribute("src",peppa.logo);
+        logo.classList.add("peppa");
+    }
+}
+
+
+
+function start (playWith){
+    imgSelected=startingImg(playWith);
+    imgBackSelected=startImgBack(playWith);
+    header(playWith);
+    logo(playWith);
     bordCleaner();
     deck = deckConstructor();
     let btn = document.getElementById("start");
@@ -108,6 +195,7 @@ function start(){
     let cards = drawAll();
     cards = play(cards);
 }
+
 
 function bordCleaner(){
     let board = document.getElementById("cardBoard");

@@ -80,20 +80,27 @@ textarea {
  
 
 .jumbotron{
-  background-color:#bc2582;
   color: #ccc;
   width:100%;
   font-family: 'Indie Flower', cursive;
 }
+
+.peppa{
+  background-color:#bc2582;
+}
+
+.patPatrouille{
+background-color:#2196f3;
+}
+
 .logo {
   height: 18vh;
   width: auto;
 }
+
 .main{
   height: 50 vh;
-  background-color: #73956F;
   font-family: 'Indie Flower', cursive;
-
 }
 
 article {
@@ -111,7 +118,6 @@ article {
 
 img {
    height: 100%;
-   width: 100%;
    z-index:1;
   
  }
@@ -135,7 +141,14 @@ img {
   top:0;
   left:0;
 }
-
+.black{
+  background-color: #000;
+}
+#start{
+  height: 100vh;
+  width : 100%;
+  z-index: 10;
+}
 
 
 .round {
@@ -145,8 +158,10 @@ img {
 .btnstart{
   padding:0;
   border:0;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   border-radius: 20px;
-  height: 5rem;
+  height: 30vh;
   font-size: 1.8em;
   font-weight: bold;
 }
@@ -157,7 +172,10 @@ img {
     width:100px;
     position: relative;
   }
-
+  .logo {
+    height: 20vh;
+    width: 100%;
+  }
 }
 
 

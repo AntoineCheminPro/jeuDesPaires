@@ -20,7 +20,7 @@
   <!-- add bootsrap -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
-  <body background="img/peppapig/pattern-02-dark-blue.png"></body>
+  <body id="bgImg"></body>
 
   <!-- add font -->
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
@@ -32,14 +32,23 @@
   <!-- Add your site or application content here -->
 
 
-  <header class="jumbotron jumbotron-fluid">
-    <div class="container row justify-content-around jumbotron-fluid">
+  <header id="header" class="jumbotron jumbotron-fluid m-0 p-0">
+    <div id="start" class="row justify-content-center  m-0 black">
+      <button class="black btnstart center col-8 my-auto" onclick="start(1)" id="startButton">
+        <img class="logo" src="img/patpatrouille/logo.png" alt="">
+      </button>
+      <button class="black btnstart center col-8 my-auto" onclick="start(2)" id="startButton">
+        <img class="logo" src="img\peppapig\119-1194994_peppa-pig-books-available-in-cziplee-peppa-pig.png" alt="">
+      </button>
+      <p class="turned" id="congratulations"></p>
+    </div>
+    <div id="fullScreen" class="container row justify-content-around jumbotron-fluid turned">
       <div>
       <h1 class="display-4">Le jeu des paires</h1>
       <p class="lead">Trouve toutes les paires pour gagner !</p>
     </div>
       <aside>
-        <img src="img\peppapig\119-1194994_peppa-pig-books-available-in-cziplee-peppa-pig.png" alt="" class="logo">
+        <img id="logo" alt="" class="logo">
       </aside>
     </div>
     
@@ -47,12 +56,7 @@
 
 <main>
 
-<div id="start" class="row justify-content-center  m-0">
-  <button class="btn-warning btnstart center col-5 col-md-4 col-lg-2 col-xl-1 m-0" onclick="start()" id="startButton">
-Commencer?
-  </button>
-  <p class="turned" id="congratulations"></p>
-</div>
+
     <div class="row justify-content-center m-0" id="cardBoard">
     </div>
 
