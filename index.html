@@ -21,27 +21,54 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
-  <meta name="theme-color" content="#fafafa">
+  <!-- add font -->
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 
-<body class="main p-0 m-0">
+
+
+<body class="main p-0 m-0" id="bgImg">
   <!-- Add your site or application content here -->
 
 
-  <header class="jumbotron jumbotron-fluid">
-    <div class="container">
+  <header id="header" class="jumbotron jumbotron-fluid m-0 p-0">
+    <div id="start" class="row justify-content-center  m-0 black">
+      <button class="black btnstart center col-8 my-auto effect turned btnCharacter" onclick="start(1)">
+        <img class="logo" src="img/patpatrouille/logo.png" alt="">
+      </button>
+      <button class="black btnstart center col-8 my-auto effect turned btnCharacter" onclick="start(2)">
+        <img class="logo" src="img/peppapig/119-1194994_peppa-pig-books-available-in-cziplee-peppa-pig.png" alt="">
+      </button>
+      <!-- speed and size choice -->
+      <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(0)">
+        <span>Petit défi (12 cartes)</span>
+      </button>
+      <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(1)">
+        <span>Moyen défi (20 cartes)</span>
+      </button>
+      <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(2)">
+        <span>Grand défi (32 cartes)</span>
+      </button>
+      <button class="turned black my-auto" id="victory">
+        <img src="img/82991965_p.gif"  onclick="playAgain()" alt="">
+        <span>Rejouer?</span>
+      </button>
+    </div>
+    <div id="fullScreen" class="container row justify-content-around jumbotron-fluid turned">
+      <div>
       <h1 class="display-4">Le jeu des paires</h1>
       <p class="lead">Trouve toutes les paires pour gagner !</p>
     </div>
+      <aside>
+        <img id="logo" alt="" class="logo">
+      </aside>
+    </div>
+    
   </header>
 
 <main>
-<div id="start" class="row justify-content-center  m-0">
-  <button class="btn-warning btnstart center col-5 col-md-4 col-lg-2 col-xl-1 m-0" onclick="start()" id="startButton">
-Commencer?
-  </button>
-  <p class="turned" id="congratulations"></p>
-</div>
+
+
     <div class="row justify-content-center m-0" id="cardBoard">
     </div>
 
