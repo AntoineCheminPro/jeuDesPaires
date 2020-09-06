@@ -1,3 +1,5 @@
+// usefull variables
+
 let patPatrouille={
     couleur:"#2196f3",
     image:"img/patpatrouille/depositphotos_84789388-stock-photo-yellow-and-white-dog-paw.jpg",
@@ -12,7 +14,6 @@ let peppa={
     dos:"img/peppapig/peppa_george_characters.png"
 }
 
-// usefull variables
 const choosenCards=[];
 const colorByValue={
     1:"#FFC482", 
@@ -70,18 +71,14 @@ const imgPeppa={
     15:"img/peppapig/suzy_sheep_splat-1.png",
     16:"img/peppapig/zoe_zebra_splat-1.png",
 }
- 
-
 
 var deck=[];
 let colorChoices=[];
 let foundPair=[];
-
-
-
-
 var GameSpeed=0;
 var deckSize=0;
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // functions
 
 // set the turning speed
@@ -163,8 +160,6 @@ function drawOneCard(fullDeck){
     return cardToCraft;
 }
 
-
-
 // set the backgroung img with the choosen characters
 function startingImg(playWith){
     let screen=document.getElementById("fullScreen");
@@ -182,7 +177,6 @@ function startingImg(playWith){
     }
     return imgSelected;
 }
-
 
 // switch the bottom of card to the right caracters
 function startImgBack (playWith){
@@ -259,7 +253,7 @@ function slowTurn(cards){
     return cards;
 }
 
-// main
+// main game
 function play(cards){
     let score=0;
     let inProgress=0;
@@ -294,6 +288,8 @@ function play(cards){
         })
     };
 }
+
+// show an victorious event 
  function victory(){
     let victory = document.getElementById("victory");
     let start = document.getElementById("start");
@@ -309,6 +305,7 @@ function play(cards){
     victory.classList.remove("turned");
  }
 
+// reload page in case of play again
  function playAgain (){
     document.location.reload(true);
  }

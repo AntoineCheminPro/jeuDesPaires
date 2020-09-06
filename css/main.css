@@ -77,7 +77,16 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
- 
+article {
+  height: 10rem;
+  position: relative;
+}
+
+img {
+  height: 100%;
+  width:auto;
+  z-index:1;
+
 
 .jumbotron{
   color: #ccc;
@@ -103,11 +112,6 @@ background-color:#2196f3;
   font-family: 'Indie Flower', cursive;
 }
 
-article {
-  height: 10rem;
-  position: relative;
-}
-
 .turned{
   display :none;
 }
@@ -116,12 +120,6 @@ article {
   display: block;
 }
 
-img {
-   height: 100%;
-   width:auto;
-   z-index:1;
-  
- }
 .effect{
   -webkit-filter: grayscale(0) blur(0px);
   filter: grayscale(0) blur(0px);
@@ -131,7 +129,7 @@ img {
 .effect:hover{
   -webkit-transform: rotateY(360deg); /* rotation de l'image */
   transform: rotateY(360deg);
- }
+}
 
 .bottom{
   width: 100%;
@@ -142,6 +140,7 @@ img {
   top:0;
   left:0;
 }
+
 .black{
   background-color: #000;
   color: #fff;
@@ -177,6 +176,12 @@ img {
     width:100px;
     position: relative;
   }
+  
+  img{
+    height: 50%;
+    margin:auto;
+    }
+
   .logo {
     height: 20vh;
     width: 100%;
