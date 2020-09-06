@@ -39,6 +39,7 @@
       <button class="black btnstart center col-8 my-auto effect turned btnCharacter" onclick="start(2)">
         <img class="logo" src="img/peppapig/119-1194994_peppa-pig-books-available-in-cziplee-peppa-pig.png" alt="">
       </button>
+
       <!-- speed and size choice -->
       <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(0)">
         <span>Petit défi (12 cartes)</span>
@@ -49,40 +50,34 @@
       <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(2)">
         <span>Grand défi (32 cartes)</span>
       </button>
+
+      <!-- set a victoy gif and make possible to play again -->
       <button class="turned black my-auto" id="victory">
         <img src="img/82991965_p.gif"  onclick="playAgain()" alt="">
         <span>Rejouer?</span>
       </button>
     </div>
-    <div id="fullScreen" class="container row justify-content-around jumbotron-fluid turned">
+
+    <!-- Start the game page -->
+    <div id="fullScreen" class="container row justify-content-around jumbotron-fluid turned p-4">
       <div>
-      <h1 class="display-4">Le jeu des paires</h1>
+      <h1 class="display-4 p-4">Le jeu des paires</h1>
       <p class="lead">Trouve toutes les paires pour gagner !</p>
     </div>
+
+    <!-- put a logo into an aside -->
       <aside>
         <img id="logo" alt="" class="logo">
       </aside>
     </div>
-    
   </header>
 
 <main>
-
-
     <div class="row justify-content-center m-0" id="cardBoard">
     </div>
-
 </main>
 
-
-
-
-
-
-
-
-
-
+<!-- scripts -->
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
