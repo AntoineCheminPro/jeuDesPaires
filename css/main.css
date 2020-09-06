@@ -118,18 +118,19 @@ article {
 
 img {
    height: 100%;
+   width:auto;
    z-index:1;
   
  }
 .effect{
   -webkit-filter: grayscale(0) blur(0px);
   filter: grayscale(0) blur(0px);
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 .effect:hover{
-  -webkit-transform: rotate(360deg); /* rotation de l'image */
-  transform: rotate(360deg);
+  -webkit-transform: rotateY(360deg); /* rotation de l'image */
+  transform: rotateY(360deg);
  }
 
 .bottom{
@@ -143,6 +144,7 @@ img {
 }
 .black{
   background-color: #000;
+  color: #fff;
 }
 #start{
   height: 100vh;

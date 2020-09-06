@@ -76,11 +76,44 @@ const imgPeppa ={
 var deck= [];
 let colorChoices=[];
 let foundPair =[];
-let deckSize = 20;
-var speed = 1200;
 
+
+
+
+var GameSpeed=0;
+var deckSize=0;
 // functions
 
+// set the turning speed
+function speed(choice){
+    let speeds = [
+        1500,
+        1000,
+        600
+    ]
+    return speeds[choice];
+}
+
+// set the size of the deck
+function size(choice){
+    let deckSizes = [
+        12,
+        20,
+        32
+    ]
+    return deckSizes[choice];
+}
+
+// set difficulty and pre-set speed and size
+function difficulty(choice){
+    deckSize = size (choice);
+    choosenSpeed = speed (choice);
+    let btnStart = document.getElementsByClassName("btnstart");
+    for (btn of btnStart){
+        btn.classList.toggle("turned");
+    }
+}
+    
 // create a deck with the choosen size
 function deckConstructor (){
     for (i=deckSize;i>0;i=i-2){
@@ -101,14 +134,7 @@ function drawAll (){
     return cards;
 }
 
-// draw a card form the clone deck
-function drawOneCard(fullDeck){
-    var cardIndex = Math.floor(Math.random()*fullDeck.length);
-    var cardToCraft = fullDeck[cardIndex];
-    fullDeck.splice(cardIndex,1);
-    return cardToCraft;
-}
-
+// craft cards with the choosen set (peppa or pat patrol)
 function craftCard(cardAtWork){
     let board = document.getElementById("cardBoard");
     let article = document.createElement("article");
@@ -129,7 +155,17 @@ function craftCard(cardAtWork){
     board.appendChild(article);
 }
 
-// start function
+// draw a card form the clone deck
+function drawOneCard(fullDeck){
+    var cardIndex = Math.floor(Math.random()*fullDeck.length);
+    var cardToCraft = fullDeck[cardIndex];
+    fullDeck.splice(cardIndex,1);
+    return cardToCraft;
+}
+
+
+
+// set the backgroung img with the choosen characters
 function startingImg(playWith){
     let screen=document.getElementById("fullScreen");
     screen.classList.remove("turned");
@@ -143,11 +179,12 @@ function startingImg(playWith){
         imgSelected=imgPeppa;
         let bgImg = document.getElementById("bgImg");
         bgImg.setAttribute('background',"img/peppapig/pattern-02-dark-blue.png");
-        
     }
     return imgSelected;
 }
 
+
+// switch the bottom of card to the right caracters
 function startImgBack (playWith){
     var imgBackSelected=0;
     if (playWith===1){
@@ -159,6 +196,7 @@ function startImgBack (playWith){
     return imgBackSelected;
 }
 
+// switch the header of card to the right caracters colors
 function header (playWith){
     let header= document.getElementById("header");
     if (playWith===1){
@@ -169,6 +207,7 @@ function header (playWith){
     }
 }
 
+// switch logo
 function logo (playWith){
     let logo= document.getElementById("logo");
     if (playWith===1){
@@ -181,14 +220,13 @@ function logo (playWith){
     }
 }
 
-
-
+// start the game
 function start (playWith){
     imgSelected=startingImg(playWith);
     imgBackSelected=startImgBack(playWith);
     header(playWith);
     logo(playWith);
-    bordCleaner();
+    boardCleaner();
     deck = deckConstructor();
     let btn = document.getElementById("start");
     btn.classList.add("turned");
@@ -196,8 +234,8 @@ function start (playWith){
     cards = play(cards);
 }
 
-
-function bordCleaner(){
+// clean the board
+function boardCleaner(){
     let board = document.getElementById("cardBoard");
     board.innerHTML="";
     deck=[];
@@ -208,7 +246,7 @@ function delayedTurn(cards) {
     window.setTimeout(function(){
         slowTurn(cards);
     }, 
-    speed);
+    choosenSpeed);
     return cards;
 }
 
@@ -232,15 +270,12 @@ function play(cards){
                 cards[i].classList.add("turned");
                 choosenCards.push(i);
                 colorChoices.push(cards[i].value);
-
                 inProgress+=1;
                 if (colorChoices.length===2){
                     trys +=1;
                     if (colorChoices[0] === colorChoices[1]){
                         score +=1;
                         foundPair.push(colorChoices[0]);
-                        // choosenCards[1].classList.add("effect");
-                        // choosenCards[0].classList.add("effect");
                         choosenCards.shift(choosenCards[1]);
                         choosenCards.shift(choosenCards[0]);
                         inProgress = 0;

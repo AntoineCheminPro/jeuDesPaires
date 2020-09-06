@@ -34,12 +34,24 @@
 
   <header id="header" class="jumbotron jumbotron-fluid m-0 p-0">
     <div id="start" class="row justify-content-center  m-0 black">
-      <button class="black btnstart center col-8 my-auto" onclick="start(1)" id="startButton">
+      <button class="black btnstart center col-8 my-auto effect turned btnCharacter" onclick="start(1)" id="startButton">
         <img class="logo" src="img/patpatrouille/logo.png" alt="">
       </button>
-      <button class="black btnstart center col-8 my-auto" onclick="start(2)" id="startButton">
+      <button class="black btnstart center col-8 my-auto effect turned btnCharacter" onclick="start(2)" id="startButton">
         <img class="logo" src="img\peppapig\119-1194994_peppa-pig-books-available-in-cziplee-peppa-pig.png" alt="">
       </button>
+      <!-- speed choice -->
+      <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(0)" id="startButton">
+        <p>Petit défi (12 cartes)</p>
+      </button>
+      <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(1)" id="startButton">
+        <p>Moyen défi (20 cartes)</p>
+      </button>
+      <button class="black btnstart center col-8 my-auto btnSize" onclick="difficulty(2)" id="startButton">
+        <p>Grand défi (32 cartes)</p>
+      </button>
+
+
       <p class="turned" id="congratulations"></p>
     </div>
     <div id="fullScreen" class="container row justify-content-around jumbotron-fluid turned">
