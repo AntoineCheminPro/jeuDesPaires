@@ -1,11 +1,11 @@
-let patPatrouille = {
+let patPatrouille={
     couleur:"#2196f3",
     image:"img/patpatrouille/depositphotos_84789388-stock-photo-yellow-and-white-dog-paw.jpg",
     logo:"img/patpatrouille/logo.png",
     dos:"img/patpatrouille/logo.png"
 }
 
-let peppa = {
+let peppa={
     couleur:"#2196f3",
     image:"img/peppapig/pattern-02-dark-blue.png",
     logo:"img/peppapig/119-1194994_peppa-pig-books-available-in-cziplee-peppa-pig.png",
@@ -14,7 +14,7 @@ let peppa = {
 
 // usefull variables
 const choosenCards=[];
-const colorByValue = {
+const colorByValue={
     1:"#FFC482", 
     2:"#ED1C24",
     3:"#FCFCFC",
@@ -33,7 +33,7 @@ const colorByValue = {
     16:"#F4DBD8"
 
 }
-const imgPatpatrouille ={
+const imgPatpatrouille={
     1:"img/patpatrouille/chase_badge_patpatrouile_sq.png", 
     2:"img/patpatrouille/fermiere_rumi_patpatrouille_sq.png",
     3:"img/patpatrouille/jake_badge_patpatrouile_sq.png",
@@ -52,7 +52,7 @@ const imgPatpatrouille ={
     16:"img/patpatrouille/4636498-la-pat-patrouille-au-complet-article_media-2.jpg"
 }
 
-const imgPeppa ={
+const imgPeppa={
     1:"img/peppapig/peppa_pig_splat-1.png", 
     2:"img/peppapig/george_pig_splat-1.png",
     3:"img/peppapig/daddy_pig_splat-1.png",
@@ -73,9 +73,9 @@ const imgPeppa ={
  
 
 
-var deck= [];
+var deck=[];
 let colorChoices=[];
-let foundPair =[];
+let foundPair=[];
 
 
 
@@ -86,7 +86,7 @@ var deckSize=0;
 
 // set the turning speed
 function speed(choice){
-    let speeds = [
+    let speeds=[
         1500,
         1000,
         600
@@ -96,7 +96,7 @@ function speed(choice){
 
 // set the size of the deck
 function size(choice){
-    let deckSizes = [
+    let deckSizes=[
         12,
         20,
         32
@@ -106,9 +106,9 @@ function size(choice){
 
 // set difficulty and pre-set speed and size
 function difficulty(choice){
-    deckSize = size (choice);
-    choosenSpeed = speed (choice);
-    let btnStart = document.getElementsByClassName("btnstart");
+    deckSize=size (choice);
+    choosenSpeed=speed (choice);
+    let btnStart=document.getElementsByClassName("btnstart");
     for (btn of btnStart){
         btn.classList.toggle("turned");
     }
@@ -125,7 +125,7 @@ function deckConstructor (){
 
 // take all cards of the deck one by one and craft it on the board// need to work on the main deck to keep size since clone deck size decrease
 function drawAll (){
-    var fullDeck = deck.slice(0);
+    var fullDeck=deck.slice(0);
     for (card of deck){
         let cardAtWork = drawOneCard(fullDeck);
         craftCard(cardAtWork);
@@ -136,15 +136,15 @@ function drawAll (){
 
 // craft cards with the choosen set (peppa or pat patrol)
 function craftCard(cardAtWork){
-    let board = document.getElementById("cardBoard");
-    let article = document.createElement("article");
-    let button = document.createElement("button");
+    let board=document.getElementById("cardBoard");
+    let article=document.createElement("article");
+    let button=document.createElement("button");
     article.classList.add("card", "m-2", "p-0","col-3", "col-xl-2","col-lg-2", "col-md-3", "border-0", "round");
     article.style.backgroundColor = colorByValue[cardAtWork];
-    let img = document.createElement("img");
-    let imgBack = document.createElement("img");
-    img.src =imgSelected[cardAtWork];
-    imgBack.src = imgBackSelected;
+    let img=document.createElement("img");
+    let imgBack=document.createElement("img");
+    img.src=imgSelected[cardAtWork];
+    imgBack.src=imgBackSelected;
     img.classList.add("effect");
     button.setAttribute("href","#");
     button.classList.add("bottom", "round");
@@ -157,8 +157,8 @@ function craftCard(cardAtWork){
 
 // draw a card form the clone deck
 function drawOneCard(fullDeck){
-    var cardIndex = Math.floor(Math.random()*fullDeck.length);
-    var cardToCraft = fullDeck[cardIndex];
+    var cardIndex=Math.floor(Math.random()*fullDeck.length);
+    var cardToCraft=fullDeck[cardIndex];
     fullDeck.splice(cardIndex,1);
     return cardToCraft;
 }
@@ -169,15 +169,15 @@ function drawOneCard(fullDeck){
 function startingImg(playWith){
     let screen=document.getElementById("fullScreen");
     screen.classList.remove("turned");
-    var imgSelected =0;
+    var imgSelected=0;
     if (playWith===1){
-        imgSelected = imgPatpatrouille;
-        let bgImg = document.getElementById("bgImg");
+        imgSelected=imgPatpatrouille;
+        let bgImg=document.getElementById("bgImg");
         bgImg.setAttribute('background',"img/patpatrouille/depositphotos_84789388-stock-photo-yellow-and-white-dog-paw.jpg");
     }
     else{
         imgSelected=imgPeppa;
-        let bgImg = document.getElementById("bgImg");
+        let bgImg=document.getElementById("bgImg");
         bgImg.setAttribute('background',"img/peppapig/pattern-02-dark-blue.png");
     }
     return imgSelected;
@@ -227,16 +227,16 @@ function start (playWith){
     header(playWith);
     logo(playWith);
     boardCleaner();
-    deck = deckConstructor();
-    let btn = document.getElementById("start");
+    deck=deckConstructor();
+    let btn=document.getElementById("start");
     btn.classList.add("turned");
-    let cards = drawAll();
-    cards = play(cards);
+    let cards=drawAll();
+    cards=play(cards);
 }
 
 // clean the board
 function boardCleaner(){
-    let board = document.getElementById("cardBoard");
+    let board=document.getElementById("cardBoard");
     board.innerHTML="";
     deck=[];
 }
@@ -261,9 +261,9 @@ function slowTurn(cards){
 
 // main
 function play(cards){
-    let score =0;
-    let inProgress =0;
-    let trys =0;
+    let score=0;
+    let inProgress=0;
+    let trys=0;
     for (let i=0; i<cards.length;i++){
         cards[i].addEventListener ("click", function(){
             if (inProgress<2){
@@ -279,6 +279,9 @@ function play(cards){
                         choosenCards.shift(choosenCards[1]);
                         choosenCards.shift(choosenCards[0]);
                         inProgress = 0;
+                        if (score===(deck.length/2)){
+                            victory()
+                        }
                     }
                     else{ 
                         cards = delayedTurn(cards);
@@ -291,3 +294,21 @@ function play(cards){
         })
     };
 }
+ function victory(){
+    let victory = document.getElementById("victory");
+    let start = document.getElementById("start");
+    let header= document.getElementById("fullScreen");
+    let board = document.getElementById("cardBoard");
+    let btnStart = document.getElementsByClassName("btnstart");
+    for (btn of btnStart){
+        btn.classList.add("turned");
+    }
+    header.classList.add("turned");
+    board.classList.add("turned");
+    start.classList.remove("turned");
+    victory.classList.remove("turned");
+ }
+
+ function playAgain (){
+    document.location.reload(true);
+ }
